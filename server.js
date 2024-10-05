@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 
 const app = express();
-const PORT = 5500;
+const PORT = process.env.PORT || 5500;
 
 app.use(express.json());
 
@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 app.use(cors({
-    origin: 'https://bovifert-backend.onrender.com',
+    origin: process.env.BASE_URL,
     credentials: true
   }));
 
