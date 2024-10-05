@@ -8,7 +8,7 @@ const PORT = 5500;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "https://harshshriva.github.io/Bovifert-/",
+  origin: "https://phenomenal-crumble-220b49.netlify.app",
   credentials: true,
 }));
 
