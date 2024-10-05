@@ -8,7 +8,7 @@ const PORT = 5500;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "https://bovifert-backend.onrender.co",
+  origin: "https://bovifert-backend.onrender.com",
   credentials: true,
 }));
 
