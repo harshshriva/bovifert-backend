@@ -8,7 +8,7 @@ const PORT = 5500;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: "https://harshshriva.github.io/Bovifert-/",
+  origin: "http://127.0.0.1:5500",
   credentials: true,
 }));
 
