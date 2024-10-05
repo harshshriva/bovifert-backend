@@ -27,7 +27,7 @@ const orderSchema = new mongoose.Schema({
 const Order = mongoose.model('Order', orderSchema);
 
 app.use(cors({
-    origin: 'https://harshshriva.github.io/Bovifert-/',
+    origin: 'http://127.0.0.1:5500',
     credentials: true
   }));
 
