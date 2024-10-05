@@ -1,17 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors')
+const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 5500;
+const PORT = 5500;
 
+// Middleware
 app.use(express.json());
+app.use(cors({
+  origin: "http://127.0.0.1:5500",
+  credentials: true,
+}));
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://harshshrivastav139:probuzin2@probuzin.jmrw6.mongodb.net/probuzin-data?retryWrites=true&w=majority&appName=Probuzin', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect('mongodb+srv://harshshrivastav139:probuzin2@probuzin.jmrw6.mongodb.net/probuzin-data?retryWrites=true&w=majority&appName=Probuzin')
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Error connecting to MongoDB:', err));
 
 // Define the Order Schema
 const orderSchema = new mongoose.Schema({
@@ -26,11 +30,6 @@ const orderSchema = new mongoose.Schema({
 
 const Order = mongoose.model('Order', orderSchema);
 
-app.use(cors({
-    origin: process.env.BASE_URL,
-    credentials: true
-  }));
-
 // POST API to handle form submission
 app.post('/api/order', async (req, res) => {
   try {
@@ -42,6 +41,7 @@ app.post('/api/order', async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
